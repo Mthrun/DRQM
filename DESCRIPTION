@@ -1,0 +1,13 @@
+Package: DRQM
+Type: Package
+Title: Quality Measurements for Dimensionality Reduction
+Version: 0.2.0
+Date: 2023-07-20
+Authors@R: c(person("Quirin", "Stier", email= "Quirin_Stier@gmx.de",role=c("aut", "cre")),person("Florian", "Lerch",role="ctb"),person("Julian", "Märte",role="aut"),person("Hermann", "Tafo",role="ctb"),person("Laukert", "Schlichting",role="ctb"),person("Michael", "Thrun",role=c("aut","cph"), comment = c(ORCID = "0000-0001-9542-5543")))
+Maintainer: Quirin Stier <Quirin_Stier@gmx.de>
+Description: Several quality measurements for investigating the performance of dimensionality reduction methods are provided here. In addition a new quality measurement called Gabriel classification error is made accessible.
+License: GPL-3
+Imports: DatabionicSwarm
+Suggests: plotly, geometry, deldir, FCPS, ProjectionBasedClustering, DataVisualizations, FastKNN, ggplot2, pcaPP,pracma, spdep, grid, igraph, cccd, sf
+LazyData: TRUE
+Encoding: UTF-8
