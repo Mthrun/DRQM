@@ -1,4 +1,4 @@
-Package: QMDR
+Package: DRquality
 Type: Package
 Title: Quality Measurements for Dimensionality Reduction
 Version: 0.2.0
