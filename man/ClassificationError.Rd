@@ -2,7 +2,7 @@
 \alias{ClassificationError}
 \title{Classification Error (rate)}
 \description{
-Compares projected points to a given prior classification
+Compares projected points to a given prior classification.
 }
 \usage{
 ClassificationError(OutputDistances,Cls,k=5)
@@ -25,9 +25,9 @@ classification is compared to the ground truth label. [Venna 2010].
 }
 \value{
 
-\item{Error }{Classification Error: 1-Accuracy[1]}
-\item{Accuracy }{Accuracy }
-\item{NewCls }{[1:n]]}
+\item{Error}{Classification Error: 1-Accuracy[1]}
+\item{Accuracy}{Accuracy }
+\item{NewCls}{[1:n]]}
 
 }
 \references{

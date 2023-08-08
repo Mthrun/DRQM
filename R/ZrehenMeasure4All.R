@@ -171,7 +171,7 @@ ZrehenMeasure4All <- function(Data, Projection, width, height, isToroid=FALSE, i
       tmpPoints <- Projection
   } else tmpPoints <- Projection
   
-
+  
   
   if(fast){
     requireNamespace('spdep')

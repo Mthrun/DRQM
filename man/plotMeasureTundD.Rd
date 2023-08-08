@@ -3,7 +3,7 @@
 \title{Computes rank-based smoothed precision and recall}
 \description{Compares the projection in pData with the original data in Data and
 calculates trustworthiness and continuity of the projection for neighborhood
-sizes ranging from 1 to NeighborhoodSize}
+sizes ranging from 1 to the size of the neighborhood.}
 \usage{plotMeasureTundD(TDmatrix, label = 'ProjectionMethod',
 gPlotList = list(TW = ggplot2::ggplot(), DC = ggplot2::ggplot()), LineType = "solid",
 Shape = 16, PointsPerE = 16)}

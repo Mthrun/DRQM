@@ -120,12 +120,18 @@ GabrielClassificationError = function(Data, ProjectedPoints, Cls, LC = NULL,
   #Calculate gabriel Graph in Outputspace  
   Gabriel=TRUE
   
-  if(is.null(LC)){ #Berechne gabriel Graphen, eigene Funktion, falls das mal auf CRAN soll
+  if(missing(LC) | is.null(LC)){ #Berechne gabriel Graphen, eigene Funktion, falls das mal auf CRAN soll
     del = Delaunay4Points(Points = ProjectedPoints, Gabriel = Gabriel, IsToroid = FALSE)
+    if(!is.matrix(del)){
+      del = del[[1]]
+    }
   }else{
     # Im toroiden fall gibts die ESOM definition, wo x und y vertauscht sind
     #del = Delaunay4Points(Points = ProjectedPoints, IsToroid = TRUE, Grid = LC[c(2, 1)])
     del = Delaunay4Points(Points = ProjectedPoints, Gabriel = Gabriel, IsToroid = TRUE, LC = LC)
+    if(!is.matrix(del)){
+      del = del[[1]]
+    }
   }
   
   #######################################################################
@@ -168,6 +174,7 @@ GabrielClassificationError = function(Data, ProjectedPoints, Cls, LC = NULL,
   if(isSymmetric(Data)){
     Dist = Data * del
   }else{
+    #storage.mode(del) = "numeric"
     Dist = as.matrix(dist(Data)) * del
   }
   ind             = which(Dist == 0, arr.ind = T)

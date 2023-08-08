@@ -4,7 +4,8 @@
 Statistical correlation by Kendall
 }
 \description{
-Calculates the statistical correlation by Kendall. Basically a wrapper to pcaPP::cor.fk
+Calculates the statistical correlation by Kendall. Basically a wrapper to
+pcaPP::cor.fk.
 }
 \usage{
 KendallsTau(InputDists, OutputDists)

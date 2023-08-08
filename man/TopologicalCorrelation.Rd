@@ -9,7 +9,7 @@
 \item{type}{How the paths in the adjacencematrix should be weighted, norm representes path lenthgs of 1 and eucldidean represents the distance in the euclidean metric.}
 \item{Kn}{k nearest neighbours in the graph. only needed in method is isomap and LocallyLinearEmbedding}
 }
-\value{TC      value}
+\value{TC value}
 \description{
 Calculates the Topololgical Correlation
 }

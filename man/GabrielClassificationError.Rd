@@ -65,6 +65,13 @@ Michael Thrun, Quirin Stier, Julian Märte
 }
 
 \examples{
+
+if(requireNamespace("FCPS")){
+data(Hepta,package="FCPS")
+projection=cmdscale(dist(Hepta$Data), k=2)
+GabrielClassificationError(Hepta$Data,projection,Hepta$Cls)$GCE
+}
+
 \donttest{
 if(requireNamespace("FCPS")){
 data(Hepta,package="FCPS")

@@ -4,7 +4,7 @@
 Rescaled average agreement rate
 }
 \description{
-Rescaled average agreement rate deduced by the co ranking matrix from LCMC
+Rescaled average agreement rate deduced by the co-ranking matrix from LCMC.
 }
 \usage{
 RAAR(Data, ProjectedPoints, kmax = nrow(Data) - 2, PlotIt = T)
