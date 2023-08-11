@@ -2,7 +2,7 @@
 \alias{ClassificationError}
 \title{Classification Error (rate)}
 \description{
-Compares projected points to a given prior classification.
+Compares projected points to a given prior classification using knn classifier.
 }
 \usage{
 ClassificationError(OutputDistances,Cls,k=5)
@@ -27,7 +27,7 @@ classification is compared to the ground truth label. [Venna 2010].
 
 \item{Error}{Classification Error: 1-Accuracy[1]}
 \item{Accuracy}{Accuracy }
-\item{NewCls}{[1:n]]}
+\item{KNNCls}{[1:n]] cls of knn classifier}
 
 }
 \references{
@@ -45,3 +45,21 @@ Here, the Outputdistances of the Projected points are used.
 \keyword{Classification Error}% use one of  RShowDoc("KEYWORDS")
 \keyword{ClassificationError}% __ONLY ONE__ keyword per line
 \keyword{ClassificationErrorRate}% __ONLY ONE__ keyword per line
+
+\examples{
+
+\donttest{
+if(requireNamespace("FCPS")){
+data(Hepta,package="FCPS")
+projection=cmdscale(dist(Hepta$Data), k=2)
+ClassificationError(as.matrix(dist(projection)),Hepta$Cls)
+}
+}
+\dontshow{
+n=100
+Data=cbind(rnorm(100),rnorm(100,2,3))
+Cls=c(rep(1,50),rep(2,50))
+projection=cmdscale(dist(Data), k=2)
+ClassificationError(as.matrix(dist(projection)),Cls)
+}
+}

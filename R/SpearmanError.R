@@ -10,13 +10,21 @@ SpearmanError = function(InputDists,OutputDists){
   # author: MT 01/2016
   # based on Diss
 #EXAMPLE:
-  if(is.vector(InputDists)){
-    requireNamespace('pracma')
-    InputDists = pracma::squareform(InputDists)
+  if(!is.matrix(InputDists)){
+    warning('InputDists is not a matrix. Calling as.matrix()')
+    InputDists=as.matrix(InputDists)
   }
-  if(is.vector(OutputDists)){
-    requireNamespace('pracma')
-    OutputDists = pracma::squareform(OutputDists)
+  if(!is.matrix(OutputDists)){
+    warning('OutputDists is not a matrix. Calling as.matrix()')
+    OutputDists=as.matrix(OutputDists)
+  }
+  if(!mode(InputDists)=='numeric'){
+    warning('InputDists is not a numeric matrix. Calling mode(InputDists)="numeric"')
+    mode(InputDists)='numeric'
+  }
+  if(!mode(OutputDists)=='numeric'){
+    warning('OutputDists is not a numeric matrix. Calling mode(OutputDists)="numeric"')
+    mode(OutputDists)='numeric'
   }
   
   VectorOfInputDists=InputDists[lower.tri(InputDists, diag = FALSE)]

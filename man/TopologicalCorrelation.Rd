@@ -14,3 +14,19 @@
 Calculates the Topololgical Correlation
 }
 \author{Hermann Tafo, Laukert Schlichting 07/2015}
+
+\examples{
+
+\donttest{
+if(requireNamespace("FCPS")){
+data(Hepta,package="FCPS")
+projection=cmdscale(dist(Hepta$Data), k=2)
+TopologicalCorrelation(Hepta$Data,projection)
+}
+}
+\dontshow{
+n=100
+Data=cbind(rnorm(100),rnorm(100,2,3))
+TopologicalCorrelation(Data,cbind(runif(n),runif(n)))
+}
+}

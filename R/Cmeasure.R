@@ -1,9 +1,9 @@
-#Cmeasure <- function(x,y,method = "pathlength",p=1,distance="euclidean"){
-# # res <- Cmeasure(x,y)
+#Cmeasure <- function(Data,Projection,method = "pathlength",p=1,distance="euclidean"){
+# # res <- Cmeasure(Data,Projection)
 # # Calculate the C-Measure subtypes MinimalPathlength and MinimWiring
 # # INPUT
-# # x    Vektor der Punkte in Eingaberaum
-# # y    Vektor der Punkte in Ausgaberaum
+# # Data    Vektor der Punkte in Eingaberaum
+# # Projection    Vektor der Punkte in Ausgaberaum
 # # k    Anzahl der Nachbarn in der Naehe
 # # method   es wird nur Minimal Pathlength und Minimal Wiring implementiert
 # # p     fuer Minimal Wiring 'wiring', Ausgaberaum, default=1
@@ -13,7 +13,33 @@
 #    MinimWiring 			 the calculated value
 # author MT
 
-Cmeasure <- function(x, y, k = 1) {
+Cmeasure <- function(Data, Projection, k = 1) {
+
+  if (!requireNamespace('igraph', quietly = TRUE)) {
+    message(
+      'Subordinate package (igraph) is missing. No computations are performed.
+            Please install the package which is defined in "Suggests".'
+    )
+    return(
+      list(
+        Object = "Subordinate package (igraph) is missing.
+                Please install the package which is defined in 'Suggests'."
+      )
+    )
+  }
+    if (!requireNamespace('cccd', quietly = TRUE)) {
+    message(
+      'Subordinate package (cccd) is missing. No computations are performed.
+            Please install the package which is defined in "Suggests".'
+    )
+    return(
+      list(
+        Object = "Subordinate package (cccd) is missing.
+                Please install the package which is defined in 'Suggests'."
+      )
+    )
+  }
+  
   KNNGraph= function (DistanceMatrix, k, Data) 
   {
     requireNamespace("cccd")
@@ -40,8 +66,8 @@ Cmeasure <- function(x, y, k = 1) {
   #k>1 nicht in papern definiert!
   #requireNamespace("Distances")
   #requireNamespace("GraphAlgorithms")
-  InputD = as.matrix(dist(x))
-  OutputD = as.matrix(dist(y))
+  InputD = as.matrix(dist(Data))
+  OutputD = as.matrix(dist(Projection))
   spath = KNNGraph(OutputD, k = k)
   swiring = KNNGraph(InputD, k = k)
   return(c(

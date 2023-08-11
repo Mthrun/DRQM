@@ -9,14 +9,33 @@ KendallsTau=function(InputDists,OutputDists){
 # OUTPUT
 # tau										 numeric, Kendalls tau
 # Author: MT 10/2015
-  requireNamespace('pcaPP')
-  if(is.vector(InputDists)){
-    requireNamespace('pracma')
-    InputDists = pracma::squareform(InputDists)
+   if (!requireNamespace('pcaPP', quietly = TRUE)) {
+    message(
+      'Subordinate package (pcaPP) is missing. No computations are performed.
+            Please install the package which is defined in "Suggests".'
+    )
+    return(
+      list(
+        Object = "Subordinate package (pcaPP) is missing.
+                Please install the package which is defined in 'Suggests'."
+      )
+    )
   }
-  if(is.vector(OutputDists)){
-    requireNamespace('pracma')
-    OutputDists = pracma::squareform(OutputDists)
+  if(!is.matrix(InputDists)){
+    warning('InputDists is not a matrix. Calling as.matrix()')
+    InputDists=as.matrix(InputDists)
+  }
+  if(!is.matrix(OutputDists)){
+    warning('OutputDists is not a matrix. Calling as.matrix()')
+    OutputDists=as.matrix(OutputDists)
+  }
+  if(!mode(InputDists)=='numeric'){
+    warning('InputDists is not a numeric matrix. Calling mode(InputDists)="numeric"')
+    mode(InputDists)='numeric'
+  }
+  if(!mode(OutputDists)=='numeric'){
+    warning('OutputDists is not a numeric matrix. Calling mode(OutputDists)="numeric"')
+    mode(OutputDists)='numeric'
   }
   
   x=InputDists[lower.tri(InputDists, diag = FALSE)]

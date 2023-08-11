@@ -33,5 +33,5 @@ for(j in 1:n){
 
 accuracy=FCPS::ClusterAccuracy(Cls, NewCls)
 
-return(list(Error=1-accuracy,Accuracy=accuracy,NewCls=NewCls))
+return(list(Error=1-accuracy,Accuracy=accuracy,KNNCls=NewCls))
 }

@@ -116,8 +116,11 @@ TopologicalCorrelation <- function(Data,ProjectedPoints,type='norm',method,Kn=0)
 		}
 
 		adjazenceMatrix <- list(matrixnD =matrixnD,matrix2D=matrix2D);
-		domain          <- DatabionicSwarm::ShortestGraphPathsC(adjazenceMatrix$matrixnD)$Cost;
-		codomain        <- DatabionicSwarm::ShortestGraphPathsC(adjazenceMatrix$matrix2D)$Cost;		
+		#no cost
+		Cost=adjazenceMatrix$matrixnD*0+1
+		domain          <- DatabionicSwarm::ShortestGraphPathsC(adjazenceMatrix$matrixnD,Cost);
+		Cost=adjazenceMatrix$matrix2D*0+1
+		codomain        <- DatabionicSwarm::ShortestGraphPathsC(adjazenceMatrix$matrix2D,Cost);		
 		n               <- length(domain[2,]);
 		m               <- length(codomain[2,]);
 		d_g.raw         <- 0;
@@ -181,8 +184,8 @@ TopologicalCorrelation <- function(Data,ProjectedPoints,type='norm',method,Kn=0)
 			}
 		}
 		adjazenceMatrix <- list(distancenD =distancematrixnD,distance2D=distancematrix2D );
-		domain          <- DatabionicSwarm::ShortestGraphPathsC(adjazenceMatrix$distancenD,adjazenceMatrix$distancenD)$Cost;
-		codomain        <- DatabionicSwarm::ShortestGraphPathsC(adjazenceMatrix$distance2D,adjazenceMatrix$distance2D)$Cost;
+		domain          <- DatabionicSwarm::ShortestGraphPathsC(adjazenceMatrix$distancenD,adjazenceMatrix$distancenD);
+		codomain        <- DatabionicSwarm::ShortestGraphPathsC(adjazenceMatrix$distance2D,adjazenceMatrix$distance2D);
 		n               <- length(domain[2,]);
 		m               <- length(codomain[2,]);
 		d_g.raw         <- 0;

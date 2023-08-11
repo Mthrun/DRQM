@@ -58,7 +58,7 @@ GCEperPoint = HD*NNdists}
 \item{ProjectionGraphError}{ Plotly object in case, plotly is chose}
 }
 \references{
-[Thrun et al, 2023] Thrun, M.C, Märte, J., Stier, Q.: Analyzing Quality Measurements for Dimensionality Reduction, Machine Learning and Knowledge Extraction (MAKE), Vol 5., Minor revision, 2023.
+[Thrun et al, 2023] Thrun, M.C, Märte, J., Stier, Q.: Analyzing Quality Measurements for Dimensionality Reduction, Machine Learning and Knowledge Extraction (MAKE), Vol 5., accepted, 2023.
 }
 \author{
 Michael Thrun, Quirin Stier, Julian Märte

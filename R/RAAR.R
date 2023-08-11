@@ -27,6 +27,24 @@ RAAR=function(Data,ProjectedPoints,kmax=nrow(Data)-2,PlotIt=T){
   # Local Overlap
   InputDistances = as.matrix(dist(Data))
   OutputDistances = as.matrix(dist(ProjectedPoints))
+  
+  sortdescending=function (x) {
+  if (is.matrix(x)) {
+    tmp <- apply(x, 2, sort, decreasing = TRUE, index.return = TRUE)
+    tmp <- unlist(tmp, recursive = FALSE, use.names = FALSE)
+    size <- c(dim(x), length(tmp))
+    x <- matrix(unlist(tmp[seq(1, size[3], 2)]), size[1], 
+      size[2])
+    ind <- matrix(unlist(tmp[seq(2, size[3], 2)]), size[1], 
+      size[2])
+    return(list(sort = x, indices = ind))
+  }
+  else result <- (sort(na.last = T, x, decreasing = TRUE, 
+    index.return = TRUE))
+  names(result) <- c("sort", "indices")
+  return(result)
+}
+  
   knneighborDistances=function(k,Distances){
     # [NNind , NNdist] = knneighborDistances(k,Distances);
     # return the k indices and the k distances of the k nearest neighbors for all points 
@@ -43,7 +61,7 @@ RAAR=function(Data,ProjectedPoints,kmax=nrow(Data)-2,PlotIt=T){
     #SortedDists=apply(Distances, 2, sort)
     
     #   S=sort(na.last=NA,VectorOfInputDists,index.return=TRUE)
-    S=sort(-Distances,decreasing = T)
+    S=sortdescendingsortdescending(-Distances,decreasing = T)
     SortedDists=-S$sort
     Sind=S$indices  
     
